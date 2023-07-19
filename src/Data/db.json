@@ -1,0 +1,32 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Harshil",
+      "email": "harshil@greylabs.com",
+      "phone": "6353394548",
+      "role": "staff"
+    },
+    {
+      "name": "Rajan",
+      "email": "rajan@mail.com",
+      "phone": "9876543210",
+      "role": "staff",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "lakhan",
+      "email": "lk@in.com",
+      "phone": "6598326521",
+      "role": "admin"
+    },
+    {
+      "name": "rushit",
+      "email": "rushi@in.com",
+      "phone": "9865329865",
+      "role": "admin",
+      "id": 4
+    }
+  ]
+}
