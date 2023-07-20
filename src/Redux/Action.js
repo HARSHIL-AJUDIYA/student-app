@@ -12,28 +12,28 @@ export const failRequest =(err)=>{
         payload:err
     }
 }
-export const getUserList =(data)=>{
+export const getStudentList =(data)=>{
     return{
         type:GET_STUDENT_LIST,
         payload:data
     }
 }
-export const deleteUser =()=>{
+export const deleteStudent =()=>{
     return{
         type:DELETE_STUDENT
     }
 }
-export const addUser =()=>{
+export const addStudent =()=>{
     return{
         type:ADD_STUDENT
     }
 }
-export const updateUser =()=>{
+export const updateStudent =()=>{
     return{
         type:UPDATE_STUDENT
     }
 }
-export const getUserObj =(data)=>{
+export const getStudentObj =(data)=>{
     return{
         type:GET_STUDENT_OBJ,
         payload:data
@@ -41,13 +41,13 @@ export const getUserObj =(data)=>{
 }
 
 
-export const FetchUserList=()=>{
+export const FetchStudentList=()=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
             axios.get('http://localhost:4000/list').then(res=>{
             const studentlist=res.data;
-            dispatch(getUserList(studentlist));
+            dispatch(getStudentList(studentlist));
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })
@@ -61,7 +61,7 @@ export const Removestudent=(code)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
             axios.delete('http://localhost:4000/list/'+code).then(res=>{
-            dispatch(deleteUser());
+            dispatch(deleteStudent());
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })
@@ -69,12 +69,12 @@ export const Removestudent=(code)=>{
         
     }
 }
-export const FunctionAddUser=(data)=>{
+export const FunctionAddStudent=(data)=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
             axios.post('http://localhost:4000/list/',data).then(res=>{
-            dispatch(addUser());
+            dispatch(addStudent());
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })
@@ -82,12 +82,12 @@ export const FunctionAddUser=(data)=>{
         
     }
 }
-export const FunctionUpdateUser=(data,code)=>{
+export const FunctionUpdateStudent=(data,code)=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
             axios.put('http://localhost:4000/list/'+code,data).then(res=>{
-            dispatch(updateUser());
+            dispatch(updateStudent());
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })
@@ -95,13 +95,13 @@ export const FunctionUpdateUser=(data,code)=>{
         
     }
 }
-export const FetchUserObj=(code)=>{
+export const FetchStudentObj=(code)=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
             axios.get('http://localhost:4000/list/'+code).then(res=>{
             const studentlist=res.data;
-            dispatch(getUserObj(studentlist));
+            dispatch(getStudentObj(studentlist));
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })

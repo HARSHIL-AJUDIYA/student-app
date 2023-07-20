@@ -1,31 +1,39 @@
-import { useEffect } from "react";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 // import { toast } from "react-toastify";
-import { FetchUserList,Removestudent} from "../Redux/Action";
+import { FetchStudentList,Removestudent} from "../Redux/Action";
 
-const Studentlisting = (props) => {
-    useEffect(()=>{
-        props.loadstudent();
-    },[]);
-    console.log("props...",props);
-    const handleDelete=(code)=>{
+class Studentlisting extends Component {
+    constructor (props){
+        super(props);
+        console.log("props...",props);
+    }
+    // useEffect(()=>{
+        //     props.loadstudent();
+        // },[]);
+    componentDidMount = () => {
+        this.props.loadstudent();
+    }
+
+    handleDelete = (code) => {
         if(window.confirm('Do you want to remove?')){
-            props.Removestudent(code);
-            props.loadstudent();
+            this.props.Removestudent(code);
+            this.props.loadstudent();
             // window.alert('Student removed successfully.')
         }
     }
-  return (
-    props.user.loading?<div><h2>Loading...</h2></div>:
-    props.user.errmsg?<div><h2>{props.user.errmsg}</h2></div>:
+    render(){
+        return (
+      this.props.user.loading?<div><h2>Loading...</h2></div>:
+      this.props.user.errmsg?<div><h2>{this.props.user.errmsg}</h2></div>:
     <div>
       <div className="list">
         <div>
             <button className="add-btn"><Link to={'/list/add'}>Add Student [+]</Link></button>
         </div>
         <div>
-            <table border={2}>
+            <table border={2} align='center'>
                 <thead>
                     <tr>
                         <td>Code</td>
@@ -38,7 +46,7 @@ const Studentlisting = (props) => {
                 </thead>
                 <tbody>
                     {
-                        props.user.studentlist && props.user.studentlist.map(item=>
+                        this.props.user.studentlist && this.props.user.studentlist.map(item=>
                         <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
@@ -47,7 +55,7 @@ const Studentlisting = (props) => {
                             <td>{item.role}</td>
                             <td>
                             <button><Link to={'/list/edit/'+item.id}>Edit</Link></button>
-                            <button onClick={()=>{handleDelete(item.id)}}>Delete</button>
+                            <button onClick={()=>{this.handleDelete(item.id)}}>Delete</button>
                             </td>
                         </tr>
                         )
@@ -59,6 +67,7 @@ const Studentlisting = (props) => {
     </div>
   )
 }
+}
 const mapStateToProps=(state)=>{
     return{
         user:state.user
@@ -66,7 +75,7 @@ const mapStateToProps=(state)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
     return{
-        loadstudent:()=>dispatch(FetchUserList()),
+        loadstudent:()=>dispatch(FetchStudentList()),
         Removestudent: (code)=>dispatch(Removestudent(code))
     }
 }

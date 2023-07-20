@@ -2,38 +2,24 @@
   "list": [
     {
       "name": "Harshil",
-      "email": "hk@mail.com",
-      "phone": "6353893214",
+      "email": "harshil@mail.com",
+      "phone": "9865326598",
       "role": "primary",
       "id": 1
     },
     {
       "name": "Rajan",
       "email": "raja@mail.com",
-      "phone": "6387893214",
-      "role": "primary",
+      "phone": "9854216532",
+      "role": "secondary",
       "id": 2
     },
     {
-      "id": 3,
-      "name": "Lakhan",
-      "email": "lakhan@mail.com",
-      "phone": "6353895414",
-      "role": "secondary"
-    },
-    {
-      "id": 4,
       "name": "Pulkit",
       "email": "pulkit@mail.com",
-      "phone": "6358754214",
-      "role": "secondary"
-    },
-    {
-      "name": "Rushit",
-      "email": "rp@mail.com",
-      "phone": "9865328754",
-      "role": "secondary",
-      "id": 5
+      "phone": "9878546532",
+      "role": "higher-secondary",
+      "id": 3
     }
   ]
 }
