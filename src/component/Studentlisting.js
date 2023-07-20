@@ -2,27 +2,27 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 // import { toast } from "react-toastify";
-import { FetchUserList,Removeuser} from "../Redux/Action";
+import { FetchUserList,Removestudent} from "../Redux/Action";
 
-const Userlisting = (props) => {
+const Studentlisting = (props) => {
     useEffect(()=>{
-        props.loaduser();
+        props.loadstudent();
     },[]);
     console.log("props...",props);
     const handleDelete=(code)=>{
         if(window.confirm('Do you want to remove?')){
-            props.Removeuser(code);
-            props.loaduser();
-            // window.alert('User removed successfully.')
+            props.Removestudent(code);
+            props.loadstudent();
+            // window.alert('Student removed successfully.')
         }
     }
   return (
     props.user.loading?<div><h2>Loading...</h2></div>:
     props.user.errmsg?<div><h2>{props.user.errmsg}</h2></div>:
     <div>
-      <div>
+      <div className="list">
         <div>
-            <button><Link to={'/user/add'}>Add User [+]</Link></button>
+            <button className="add-btn"><Link to={'/list/add'}>Add Student [+]</Link></button>
         </div>
         <div>
             <table border={2}>
@@ -38,7 +38,7 @@ const Userlisting = (props) => {
                 </thead>
                 <tbody>
                     {
-                        props.user.userlist && props.user.userlist.map(item=>
+                        props.user.studentlist && props.user.studentlist.map(item=>
                         <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
@@ -46,7 +46,7 @@ const Userlisting = (props) => {
                             <td>{item.phone}</td>
                             <td>{item.role}</td>
                             <td>
-                            <button><Link to={'/user/edit/'+item.id}>Edit</Link></button>
+                            <button><Link to={'/list/edit/'+item.id}>Edit</Link></button>
                             <button onClick={()=>{handleDelete(item.id)}}>Delete</button>
                             </td>
                         </tr>
@@ -66,10 +66,10 @@ const mapStateToProps=(state)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
     return{
-        loaduser:()=>dispatch(FetchUserList()),
-        Removeuser: (code)=>dispatch(Removeuser(code))
+        loadstudent:()=>dispatch(FetchUserList()),
+        Removestudent: (code)=>dispatch(Removestudent(code))
     }
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps) (Userlisting);
+export default connect(mapStateToProps,mapDispatchToProps) (Studentlisting);

@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "./component/Home";
-import Userlisting from "./component/Userlisting";
-import Adduser from "./component/Adduser";
-import Updateuser from "./component/Updateuser";
+import Studentlisting from "./component/Studentlisting";
+import Addstudent from "./component/Addstudent";
+import Updatestudent from "./component/Updatestudent";
 import { Provider } from "react-redux";
 import Store from "./Redux/Store";
 
@@ -12,15 +12,15 @@ function App() {
     <Provider store={Store}>
     <div>
       <BrowserRouter>
-        <div>
-          <Link to={"/"}> Home </Link>
-          <Link to={"/user"}> User </Link>
+        <div className="menu-bar">
+          <Link className="menu" to={"/"}> Home </Link>
+          <Link className="menu" to={"/list"}> List </Link>
         </div>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/user" element={<Userlisting></Userlisting>}></Route>
-          <Route path="/user/add" element={<Adduser></Adduser>}></Route>
-          <Route path="/user/edit/:code" element={<Updateuser></Updateuser>}></Route>
+          <Route path="/list" element={<Studentlisting></Studentlisting>}></Route>
+          <Route path="/list/add" element={<Addstudent></Addstudent>}></Route>
+          <Route path="/list/edit/:code" element={<Updatestudent></Updatestudent>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

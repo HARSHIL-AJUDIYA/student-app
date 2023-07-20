@@ -24,6 +24,35 @@
   color: white;
 }
 
+.menu-bar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-style:groove;
+}
+
+.menu {
+  margin-left: 10px;
+}
+
+.title {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  margin-top: 10%;
+  font-size: large;
+}
+
+.list {
+  height: 100vh;
+  width: 100vw;
+  font-size: x-large;
+}
+
+.add-btn {
+  margin-left: 42.5%;
+  margin-bottom: 5px;
+  font-size: medium;
+  background-color: rgb(0, 255, 0);
+}
+
 .App-link {
   color: #61dafb;
 }

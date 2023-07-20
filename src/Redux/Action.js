@@ -1,4 +1,4 @@
-import { FAIL_REQUEST, GET_USER_LIST, MAKE_REQUEST, DELETE_USER, ADD_USER, UPDATE_USER, GET_USER_OBJ } from "./ActionType";
+import { FAIL_REQUEST, GET_STUDENT_LIST, MAKE_REQUEST, DELETE_STUDENT, ADD_STUDENT, UPDATE_STUDENT, GET_STUDENT_OBJ } from "./ActionType";
 import axios from "axios";
 
 export const makeRequest =()=>{
@@ -14,28 +14,28 @@ export const failRequest =(err)=>{
 }
 export const getUserList =(data)=>{
     return{
-        type:GET_USER_LIST,
+        type:GET_STUDENT_LIST,
         payload:data
     }
 }
 export const deleteUser =()=>{
     return{
-        type:DELETE_USER
+        type:DELETE_STUDENT
     }
 }
 export const addUser =()=>{
     return{
-        type:ADD_USER
+        type:ADD_STUDENT
     }
 }
 export const updateUser =()=>{
     return{
-        type:UPDATE_USER
+        type:UPDATE_STUDENT
     }
 }
 export const getUserObj =(data)=>{
     return{
-        type:GET_USER_OBJ,
+        type:GET_STUDENT_OBJ,
         payload:data
     }
 }
@@ -45,9 +45,9 @@ export const FetchUserList=()=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
-            axios.get('http://localhost:4000/user').then(res=>{
-            const userlist=res.data;
-            dispatch(getUserList(userlist));
+            axios.get('http://localhost:4000/list').then(res=>{
+            const studentlist=res.data;
+            dispatch(getUserList(studentlist));
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })
@@ -56,11 +56,11 @@ export const FetchUserList=()=>{
     }
 }
 
-export const Removeuser=(code)=>{
+export const Removestudent=(code)=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
-            axios.delete('http://localhost:4000/user/'+code).then(res=>{
+            axios.delete('http://localhost:4000/list/'+code).then(res=>{
             dispatch(deleteUser());
         }).catch(err=>{
             dispatch(failRequest(err.msg))
@@ -73,7 +73,7 @@ export const FunctionAddUser=(data)=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
-            axios.post('http://localhost:4000/user/',data).then(res=>{
+            axios.post('http://localhost:4000/list/',data).then(res=>{
             dispatch(addUser());
         }).catch(err=>{
             dispatch(failRequest(err.msg))
@@ -86,7 +86,7 @@ export const FunctionUpdateUser=(data,code)=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
-            axios.put('http://localhost:4000/user/'+code,data).then(res=>{
+            axios.put('http://localhost:4000/list/'+code,data).then(res=>{
             dispatch(updateUser());
         }).catch(err=>{
             dispatch(failRequest(err.msg))
@@ -99,9 +99,9 @@ export const FetchUserObj=(code)=>{
     return (dispatch)=>{
         dispatch(makeRequest());
         // setTimeout(()=>{
-            axios.get('http://localhost:4000/user/'+code).then(res=>{
-            const userlist=res.data;
-            dispatch(getUserObj(userlist));
+            axios.get('http://localhost:4000/list/'+code).then(res=>{
+            const studentlist=res.data;
+            dispatch(getUserObj(studentlist));
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })

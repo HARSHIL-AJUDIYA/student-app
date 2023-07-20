@@ -1,32 +1,39 @@
 {
-  "user": [
+  "list": [
     {
-      "id": 1,
       "name": "Harshil",
-      "email": "harshil@greylabs.com",
-      "phone": "6353394548",
-      "role": "staff"
+      "email": "hk@mail.com",
+      "phone": "6353893214",
+      "role": "primary",
+      "id": 1
     },
     {
       "name": "Rajan",
-      "email": "rajan@mail.com",
-      "phone": "9876543210",
-      "role": "staff",
+      "email": "raja@mail.com",
+      "phone": "6387893214",
+      "role": "primary",
       "id": 2
     },
     {
       "id": 3,
-      "name": "lakhan",
-      "email": "lk@in.com",
-      "phone": "6598326521",
-      "role": "admin"
+      "name": "Lakhan",
+      "email": "lakhan@mail.com",
+      "phone": "6353895414",
+      "role": "secondary"
     },
     {
-      "name": "rushit",
-      "email": "rushi@in.com",
-      "phone": "9865329865",
-      "role": "admin",
-      "id": 4
+      "id": 4,
+      "name": "Pulkit",
+      "email": "pulkit@mail.com",
+      "phone": "6358754214",
+      "role": "secondary"
+    },
+    {
+      "name": "Rushit",
+      "email": "rp@mail.com",
+      "phone": "9865328754",
+      "role": "secondary",
+      "id": 5
     }
   ]
 }

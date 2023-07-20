@@ -1,9 +1,9 @@
-import { ADD_USER, DELETE_USER, FAIL_REQUEST, GET_USER_LIST, GET_USER_OBJ, MAKE_REQUEST, UPDATE_USER } from "./ActionType"
+import { ADD_STUDENT, DELETE_STUDENT, FAIL_REQUEST, GET_STUDENT_LIST, GET_STUDENT_OBJ, MAKE_REQUEST, UPDATE_STUDENT } from "./ActionType"
 
 const initialstate ={
     loading:true,
-    userlist:[],
-    userobj:{},
+    studentlist:[],
+    studentobj:{},
     errmsg:''
 }
 
@@ -20,33 +20,33 @@ export const Reducer =(state = initialstate, action)=>{
                 loading:false,
                 errmsg:action.payload
             }
-        case GET_USER_LIST:
+        case GET_STUDENT_LIST:
             return {
                 loading:false,
                 errmsg:'',
-                userlist:action.payload,
-                userobj:{}
+                studentlist:action.payload,
+                studentobj:{}
             }
-        case DELETE_USER:
+        case DELETE_STUDENT:
             return {
                 ...state,
                 loading:false
             }
-        case ADD_USER:
+        case ADD_STUDENT:
             return {
                 ...state,
                 loading:false
             }
-        case UPDATE_USER:
+        case UPDATE_STUDENT:
             return {
                 ...state,
                 loading:false
             }
-        case GET_USER_OBJ:
+        case GET_STUDENT_OBJ:
             return {
                 ...state,
                 loading:false,
-                userobj:action.payload
+                studentobj:action.payload
             }
         default: return state
     }
