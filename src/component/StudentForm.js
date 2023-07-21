@@ -4,12 +4,14 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { FetchStudentObj, FunctionUpdateStudent, FunctionAddStudent } from "../Redux/Action";
 
 const StudentForm = () => {
-  const [id, setId] = useState(0);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [role, setRole] = useState("primary");
-
+  const [{ id, name, email, phone, role }, setState] = useState({
+    id: 0,
+    name: "",
+    email: "",
+    phone: "",
+    role: "primary",
+  });
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { code } = useParams();
@@ -19,6 +21,20 @@ const StudentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!name.trim()) {
+      window.alert("Please enter a name.");
+      return;
+    }
+    else if(!email.trim() || !email.match(`[a-z0-9]+@[a-z]+.[a-z]{2,3}`)) {
+      window.alert("Please enter a valid email address.");
+      return;
+    }
+    else if (!phone.trim() || !phone.match(/^\d{10}$/)) {
+      window.alert("Please enter a valid phone number.");
+      return;
+    }
+    else{
     const studentData = { name, email, phone, role };
 
     if (isUpdateMode) {
@@ -30,7 +46,8 @@ const StudentForm = () => {
     }
 
     navigate("/list");
-    console.log("studentData", studentData);
+    }
+    // console.log("studentData", studentData);
   };
 
   useEffect(() => {
@@ -41,11 +58,13 @@ const StudentForm = () => {
 
   useEffect(() => {
     if (isUpdateMode && studentobj) {
-      setId(studentobj.id);
-      setName(studentobj.name);
-      setEmail(studentobj.email);
-      setPhone(studentobj.phone);
-      setRole(studentobj.role);
+      setState({
+        id: studentobj.id,
+        name: studentobj.name,
+        email: studentobj.email,
+        phone: studentobj.phone,
+        role: studentobj.role
+      });
     }
   }, [studentobj, isUpdateMode]);
 
@@ -61,24 +80,24 @@ const StudentForm = () => {
               <tr>
                 {!isUpdateMode && <td>ID</td>}
                 <td>Name</td>
-                <td>Role</td>
                 <td>Email</td>
                 <td>Phone</td>
+                <td>Role</td>
               </tr>
             </thead>
             <tbody>
               <tr>
                 {!isUpdateMode && <td><input type="text" value={id} disabled="disabled" /></td>}
-                <td><input type="text" value={name} onChange={(e) => setName(e.target.value)} /></td>
+                <td><input type="text" value={name} placeholder="Name" onChange={(e) => setState((prev)=>({...prev,name: e.target.value}))} /></td>
+                <td><input type="text" value={email} placeholder="Email ID" onChange={(e) => setState((prev)=>({...prev,email: e.target.value}))} /></td>
+                <td><input type="text" value={phone} placeholder="Phone No." onChange={(e) => setState((prev)=>({...prev,phone: e.target.value}))} /></td>
                 <td>
-                  <select value={role} onChange={(e) => setRole(e.target.value)}>
+                  <select value={role} onChange={(e) => setState((prev)=>({...prev,role: e.target.value}))}>
                     <option value="primary">Primary</option>
                     <option value="secondary">Secondary</option>
                     <option value="higher-secondary">Higher-Secondary</option>
                   </select>
                 </td>
-                <td><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></td>
-                <td><input type="number" value={phone} onChange={(e) => setPhone(e.target.value)} /></td>
               </tr>
             </tbody>
           </table>

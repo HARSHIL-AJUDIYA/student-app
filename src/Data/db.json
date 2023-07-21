@@ -15,11 +15,25 @@
       "id": 2
     },
     {
-      "name": "Pulkit",
-      "email": "pulkit@mail.com",
-      "phone": "9878546532",
+      "name": "pulkit",
+      "email": "hgsd@hsd.sdg",
+      "phone": "8765326598",
       "role": "higher-secondary",
       "id": 3
+    },
+    {
+      "name": "Lakhan",
+      "email": "ls@mail.com",
+      "phone": "8754213265",
+      "role": "secondary",
+      "id": 4
+    },
+    {
+      "name": "Rushit",
+      "email": "rp@mail.com",
+      "phone": "8765322185",
+      "role": "higher-secondary",
+      "id": 5
     }
   ]
 }
