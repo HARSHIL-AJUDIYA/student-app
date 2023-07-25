@@ -9,25 +9,15 @@ class Studentlisting extends Component {
         super(props);
         console.log("props...",props);
     }
-    // useEffect(()=>{
-        //     props.loadstudent();
-        // },[]);
     componentDidMount = () => {
         this.props.loadstudent();
     }
 
-    // componentDidUpdate =(prev)=>{
-    //     if(prev.user.studentlist !== this.props.user.studentlist){
-    //         this.props.loadstudent();
-    //     }
-    //     console.log("prev",prev,"props",this.props);
-    // }
-
     handleDelete = (code) => {
         if(window.confirm('Do you want to remove?')){
             this.props.Removestudent(code);
-            this.props.loadstudent();
-            // window.alert('Student removed successfully.')
+            setTimeout(()=>{this.props.loadstudent()},100)
+            // this.forceUpdate();
         }
     }
     render(){

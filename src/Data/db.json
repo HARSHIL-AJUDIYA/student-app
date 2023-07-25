@@ -10,29 +10,29 @@
     {
       "name": "Rajan",
       "email": "raja@mail.com",
-      "phone": "9854216532",
+      "phone": "9865254532",
       "role": "secondary",
       "id": 2
     },
     {
-      "name": "pulkit",
-      "email": "hgsd@hsd.sdg",
-      "phone": "8765326598",
+      "name": "Pulkit",
+      "email": "pul@kit.com",
+      "phone": "9865875432",
       "role": "higher-secondary",
       "id": 3
     },
     {
-      "name": "Lakhan",
-      "email": "ls@mail.com",
-      "phone": "8754213265",
+      "name": "Rushit",
+      "email": "rp@mail.com",
+      "phone": "6554216532",
       "role": "secondary",
       "id": 4
     },
     {
-      "name": "Rushit",
-      "email": "rp@mail.com",
-      "phone": "8765322185",
-      "role": "higher-secondary",
+      "name": "lakhan",
+      "email": "lakha@mail.com",
+      "phone": "9887216532",
+      "role": "secondary",
       "id": 5
     }
   ]

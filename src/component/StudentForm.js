@@ -26,11 +26,11 @@ const StudentForm = () => {
       window.alert("Please enter a name.");
       return;
     }
-    else if(!email.trim() || !email.match(`[a-z0-9]+@[a-z]+.[a-z]{2,3}`)) {
+    else if(!email.match(/[a-z0-9]+@[a-z]+.[a-z]{2,3}/)) {
       window.alert("Please enter a valid email address.");
       return;
     }
-    else if (!phone.trim() || !phone.match(/^\d{10}$/)) {
+    else if (!phone.match(/^\d{10}$/)) {
       window.alert("Please enter a valid phone number.");
       return;
     }

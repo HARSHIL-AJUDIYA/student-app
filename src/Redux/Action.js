@@ -44,14 +44,14 @@ export const getStudentObj =(data)=>{
 export const FetchStudentList=()=>{
     return (dispatch)=>{
         dispatch(makeRequest());
-        // setTimeout(()=>{
+        setTimeout(()=>{
             axios.get('http://localhost:4000/list').then(res=>{
             const studentlist=res.data;
             dispatch(getStudentList(studentlist));
         }).catch(err=>{
             dispatch(failRequest(err.msg))
         })
-        // },2000)
+        },200)
         
     }
 }
