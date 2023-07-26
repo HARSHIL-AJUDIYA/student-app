@@ -27,19 +27,19 @@ const StudentForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!name.trim()) {
-    //   window.alert("Please enter a name.");
-    //   return;
-    // }
-    // else if(!email.match(/[a-z0-9]+@[a-z]+.[a-z]{2,3}/)) {
-    //   window.alert("Please enter a valid email address.");
-    //   return;
-    // }
-    // else if (!phone.match(/^\d{10}$/)) {
-    //   window.alert("Please enter a valid phone number.");
-    //   return;
-    // }
-    // else{
+    if (!name.trim()) {
+      window.alert("Please enter a name.");
+      return;
+    }
+    else if(!email.match(/[a-z0-9]+@[a-z]+.[a-z]{2,3}/)) {
+      window.alert("Please enter a valid email address.");
+      return;
+    }
+    else if (!phone.match(/^\d{10}$/)) {
+      window.alert("Please enter a valid phone number.");
+      return;
+    }
+    else{
     const studentData = { name, email, phone, role };
 
     if (isUpdateMode) {
@@ -51,7 +51,7 @@ const StudentForm = () => {
     }
 
     navigate("/list");
-    // }
+    }
     // console.log("studentData", studentData);
   };
 
