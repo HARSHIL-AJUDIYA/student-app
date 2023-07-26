@@ -19,22 +19,27 @@ const StudentForm = () => {
 
   const isUpdateMode = !!code;
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setState((prevState) => ({ ...prevState, [name]: value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name.trim()) {
-      window.alert("Please enter a name.");
-      return;
-    }
-    else if(!email.match(/[a-z0-9]+@[a-z]+.[a-z]{2,3}/)) {
-      window.alert("Please enter a valid email address.");
-      return;
-    }
-    else if (!phone.match(/^\d{10}$/)) {
-      window.alert("Please enter a valid phone number.");
-      return;
-    }
-    else{
+    // if (!name.trim()) {
+    //   window.alert("Please enter a name.");
+    //   return;
+    // }
+    // else if(!email.match(/[a-z0-9]+@[a-z]+.[a-z]{2,3}/)) {
+    //   window.alert("Please enter a valid email address.");
+    //   return;
+    // }
+    // else if (!phone.match(/^\d{10}$/)) {
+    //   window.alert("Please enter a valid phone number.");
+    //   return;
+    // }
+    // else{
     const studentData = { name, email, phone, role };
 
     if (isUpdateMode) {
@@ -46,7 +51,7 @@ const StudentForm = () => {
     }
 
     navigate("/list");
-    }
+    // }
     // console.log("studentData", studentData);
   };
 
@@ -54,17 +59,12 @@ const StudentForm = () => {
     if (isUpdateMode) {
       dispatch(FetchStudentObj(code));
     }
-  }, [code, dispatch, isUpdateMode]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUpdateMode]);
 
   useEffect(() => {
     if (isUpdateMode && studentobj) {
-      setState({
-        id: studentobj.id,
-        name: studentobj.name,
-        email: studentobj.email,
-        phone: studentobj.phone,
-        role: studentobj.role
-      });
+      setState(studentobj);
     }
   }, [studentobj, isUpdateMode]);
 
@@ -78,7 +78,6 @@ const StudentForm = () => {
           <table border={2}>
             <thead>
               <tr>
-                {!isUpdateMode && <td>ID</td>}
                 <td>Name</td>
                 <td>Email</td>
                 <td>Phone</td>
@@ -86,13 +85,40 @@ const StudentForm = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {!isUpdateMode && <td><input type="text" value={id} disabled="disabled" /></td>}
-                <td><input type="text" value={name} placeholder="Name" onChange={(e) => setState((prev)=>({...prev,name: e.target.value}))} /></td>
-                <td><input type="text" value={email} placeholder="Email ID" onChange={(e) => setState((prev)=>({...prev,email: e.target.value}))} /></td>
-                <td><input type="text" value={phone} placeholder="Phone No." onChange={(e) => setState((prev)=>({...prev,phone: e.target.value}))} /></td>
+            <tr>
                 <td>
-                  <select value={role} onChange={(e) => setState((prev)=>({...prev,role: e.target.value}))}>
+                  <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    placeholder="Name"
+                    onChange={handleInputChange}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="email"
+                    value={email}
+                    placeholder="Email ID"
+                    onChange={handleInputChange}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="phone"
+                    value={phone}
+                    placeholder="Phone No."
+                    onChange={handleInputChange}
+                  />
+                </td>
+                <td>
+                  <select
+                    name="role"
+                    value={role}
+                    onChange={handleInputChange}
+                  >
                     <option value="primary">Primary</option>
                     <option value="secondary">Secondary</option>
                     <option value="higher-secondary">Higher-Secondary</option>

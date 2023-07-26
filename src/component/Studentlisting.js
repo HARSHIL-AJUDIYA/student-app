@@ -33,7 +33,7 @@ class Studentlisting extends Component {
             <table border={2} align='center'>
                 <thead>
                     <tr>
-                        <td>Code</td>
+                        <td>ID</td>
                         <td>Name</td>
                         <td>Email</td>
                         <td>Phone</td>
@@ -52,7 +52,7 @@ class Studentlisting extends Component {
                             <td>{item.role}</td>
                             <td>
                             <button><Link to={'/list/edit/'+item.id}>Edit</Link></button>
-                            <button onClick={()=>{this.handleDelete(item.id)}}>Delete</button>
+                            <button onClick={this.handleDelete.bind(this, item.id)}>Delete</button>
                             </td>
                         </tr>
                         )
